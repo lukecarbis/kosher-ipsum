@@ -1,25 +1,26 @@
 <?php
 /*
-Plugin Name: Bacon Ipsum - Generator Form
-Description: Generates the input form for generating meaty bacon ipsum
-Plugin URI: https://github.com/petenelson/bacon-ipsum
-Version: 2.1.4
-Author: Pete Nelson (@GunGeekATX)
-Author URI: http://petenelson.com
+Plugin Name: Kosher Ipsum - Generator Form
+Description: Generates the input form for generating kosher ipsum
+Plugin URI: https://github.com/lukecarbis/kosher-ipsum
+Version: 1.0
+Author: Luke Carbis (@lukecarbis)
+Author URI: http://carb.is
+Contributors: Pete Nelson (@GunGeekATX)
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
-add_shortcode('gga-bacon-ipsum-form', 'gga_bacon_ipsum_form');
+add_shortcode('kosher-ipsum-form', 'kosher_ipsum_form');
 
-function gga_bacon_ipsum_form($atts) {
+function kosher_ipsum_form($atts) {
 	$output = '';
 
 	$form = '
-		<p>Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!</p>
+		<p>Does your lorem ipsum text need a little less latin and a little more Hebrew? Give our generator a try... it’s kosher!</p>
 
-		<form id="make-it-meaty" action="' . site_url('/') . '" method="get">
+		<form id="make-it-kosher" action="' . site_url('/') . '" method="get">
 			<table>
 				<tbody>
 				<tr>
@@ -28,15 +29,15 @@ function gga_bacon_ipsum_form($atts) {
 				</tr>
 				<tr>
 					<td>Type:</td>
-					<td><input id="all-meat" type="radio" name="type" value="all-meat" checked="checked" /><label for="all-meat">All Meat</label> <input id="meat-and-filler" type="radio" name="type" value="meat-and-filler" /><label for="meat-and-filler">Meat and Filler</label></td>
+					<td><input id="all-kashrut" type="radio" name="type" value="all-kashrut" checked="checked" /><label for="all-kashrut">All Kashrut</label> <input id="kashrut-and-filler" type="radio" name="type" value="kashrut-and-filler" /><label for="kashrut-and-filler">Kashrut and Filler</label></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td><input id="start-with-lorem" type="checkbox" name="start-with-lorem" value="1" checked="checked" /> <label for="start-with-lorem">Start with \'Bacon ipsum dolor sit amet...\'</label></td>
+					<td><input id="start-with-lorem" type="checkbox" name="start-with-lorem" value="1" checked="checked" /> <label for="start-with-lorem">Start with \'Kosher ipsum dolor sit amet...\'</label></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" value="Give me bacon" /></td>
+					<td><input type="submit" value="Challah Me" /></td>
 				</tr>
 				</tbody>
 				</table>
@@ -46,23 +47,23 @@ function gga_bacon_ipsum_form($atts) {
 
 	if (isset($_REQUEST["type"])) {
 
-		require_once 'gga-BaconIpsumGenerator.php';
+		require_once 'KosherIpsumGenerator.php';
 
-		$generator = new BaconIpsumGenerator();
+		$generator = new KosherIpsumGenerator();
 		$number_of_paragraphs = 5;
 		if (isset($_REQUEST["paras"]))
 			$number_of_paragraphs = intval($_REQUEST["paras"]);
 
 		$output = '';
-					
+
 		if ($number_of_paragraphs < 1)
 			$number_of_paragraphs = 1;
 
 		if ($number_of_paragraphs > 100)
 			$number_of_paragraphs = 100;
 
-		$paragraphs = $generator->Make_Some_Meaty_Filler(
-			$_REQUEST["type"], 
+		$paragraphs = $generator->make_some_kosher_filler(
+			$_REQUEST["type"],
 			$number_of_paragraphs,
 			isset($_REQUEST["start-with-lorem"]) && $_REQUEST["start-with-lorem"] == "1");
 
@@ -70,7 +71,7 @@ function gga_bacon_ipsum_form($atts) {
 		$output = '<div>';
 		foreach($paragraphs as $paragraph)
 			$output .= '<p>' . $paragraph . '</p>';
-		 
+
 		$output .= '</div>';
 	}
 
