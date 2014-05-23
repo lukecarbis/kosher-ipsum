@@ -17,7 +17,7 @@ function kosher_ipsum_form($atts) {
 	$output = '';
 
 	$form = '
-		<p>Does your lorem ipsum text need a little less latin and a little more Hebrew? Give our generator a try... it’s kosher!</p>
+		<p>Does your lorem ipsum text need a little less Latin and a little more Hebrew? Give our generator a try... it’s kosher!</p>
 
 		<form id="make-it-kosher" action="' . site_url('/') . '" method="get">
 			<table>
