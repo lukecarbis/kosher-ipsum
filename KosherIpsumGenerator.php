@@ -235,7 +235,7 @@ class KosherIpsumGenerator {
 
 			if ( $i === 0 && $start_with_lorem && count( $words ) > 0 ) {
 				$words[0] = strtolower( $words[0] );
-				$words    = 'Bacon ipsum dolor sit amet ' . $words;
+				$words    = 'Kosher ipsum dolor sit amet ' . $words;
 			}
 
 			$paragraphs[] = rtrim( $words );
