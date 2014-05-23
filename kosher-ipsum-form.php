@@ -28,7 +28,7 @@ function kosher_ipsum_form($atts) {
 				</tr>
 				<tr>
 					<td>Type:</td>
-					<td><input id="all-kashrut" type="radio" name="type" value="all-kashrut" checked="checked" /><label for="all-kashrut">All Kashrut</label> <input id="kashrut-and-filler" type="radio" name="type" value="kashrut-and-filler" /><label for="kashrut-and-filler">Kashrut and Filler</label></td>
+					<td><input id="all-kashrut" type="radio" name="type" value="all-kashrut" checked="checked" /> <label for="all-kashrut">All Kashrut</label> <input id="kashrut-and-filler" type="radio" name="type" value="kashrut-and-filler" /> <label for="kashrut-and-filler">Kashrut and Filler</label></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -76,4 +76,3 @@ function kosher_ipsum_form($atts) {
 
 	return $output . $form;
 }
-
