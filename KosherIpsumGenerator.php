@@ -24,7 +24,6 @@ class KosherIpsumGenerator {
 			'haggadah',
 			'rabbi',
 			'rebbi',
-			'tzaddik',
 			'shabbat',
 			'pesach',
 			'sukkot',
