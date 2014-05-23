@@ -4,13 +4,12 @@ Plugin Name: Kosher Ipsum - Generator Form
 Description: Generates the input form for generating kosher ipsum
 Plugin URI: https://github.com/lukecarbis/kosher-ipsum
 Version: 1.0
-Author: Luke Carbis (@lukecarbis)
+Author: Luke Carbis
 Author URI: http://carb.is
 Contributors: Pete Nelson (@GunGeekATX)
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
 
 add_shortcode('kosher-ipsum-form', 'kosher_ipsum_form');
 
@@ -75,9 +74,6 @@ function kosher_ipsum_form($atts) {
 		$output .= '</div>';
 	}
 
-
-
 	return $output . $form;
-
 }
 

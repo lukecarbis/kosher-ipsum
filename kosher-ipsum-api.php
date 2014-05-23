@@ -4,7 +4,7 @@ Plugin Name: Kosher Ipsum - API
 Description: Handles incoming API requests
 Plugin URI: https://github.com/lukecarbis/kosher-ipsum
 Version: 1.0
-Author: Luke Carbis (@lukecarbis)
+Author: Luke Carbis
 Author URI: http://carb.is
 Contributors: Pete Nelson (@GunGeekATX)
 */
@@ -70,6 +70,5 @@ class Kosher_Ipsum_API {
 	}
 
 }
-
 
 new Kosher_Ipsum_API();
