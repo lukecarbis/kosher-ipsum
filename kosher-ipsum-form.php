@@ -14,7 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 add_shortcode('kosher-ipsum-form', 'kosher_ipsum_form');
 
 function kosher_ipsum_form($atts) {
+	require_once 'KosherIpsumGenerator.php';
+	$generator = new KosherIpsumGenerator();
+
 	$output = '';
+
+	$words       = $generator->get_words( $type );
+	$button_text = ucwords( $words[0] );
 
 	$form = '
 		<p>Does your lorem ipsum text need a little less Latin and a little more Hebrew? Give our generator a try... it’s kosher!</p>
@@ -36,7 +42,7 @@ function kosher_ipsum_form($atts) {
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" value="Challah Me" /></td>
+					<td><input type="submit" value="' . $button_text . ' Me" /></td>
 				</tr>
 				</tbody>
 				</table>
@@ -45,31 +51,32 @@ function kosher_ipsum_form($atts) {
 
 
 	if (isset($_REQUEST["type"])) {
-
-		require_once 'KosherIpsumGenerator.php';
-
-		$generator = new KosherIpsumGenerator();
 		$number_of_paragraphs = 5;
-		if (isset($_REQUEST["paras"]))
-			$number_of_paragraphs = intval($_REQUEST["paras"]);
+		if ( isset( $_REQUEST['paras'] ) ) {
+			$number_of_paragraphs = intval( $_REQUEST['paras'] );
+		}
 
 		$output = '';
 
-		if ($number_of_paragraphs < 1)
+		if ( $number_of_paragraphs < 1 ) {
 			$number_of_paragraphs = 1;
+		}
 
-		if ($number_of_paragraphs > 100)
+		if ( $number_of_paragraphs > 100 ) {
 			$number_of_paragraphs = 100;
+		}
 
 		$paragraphs = $generator->make_some_kosher_filler(
-			$_REQUEST["type"],
+			$_REQUEST['type'],
 			$number_of_paragraphs,
-			isset($_REQUEST["start-with-lorem"]) && $_REQUEST["start-with-lorem"] == "1");
+			isset( $_REQUEST['start-with-lorem'] ) && $_REQUEST['start-with-lorem'] == '1'
+		);
 
 
-		$output = '<div>';
-		foreach($paragraphs as $paragraph)
+		$output = '<div class="generated-text">';
+		foreach( $paragraphs as $paragraph ) {
 			$output .= '<p>' . $paragraph . '</p>';
+		}
 
 		$output .= '</div>';
 	}
